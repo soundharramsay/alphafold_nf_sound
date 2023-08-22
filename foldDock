@@ -1,0 +1,10 @@
+## open i session ....insytalltion may take 3-5 hours ....dont install in home directory ---size is too big 
+##
+(base) [sor4003@scu-node046 test]$ bash /athena/kleavelandlab/store/sor4003/folddock/FoldDock/run_pipeline.sh 1ay7_u1.fasta 1ay7_u2.fasta
+error 
+AttributeError: module 'jax.ops' has no attribute 'index_add'
+
+
+####################################################################
+https://github.com/patrickbryant1/SpeedPPI
+conda create -n speedPPI python=3.9
