@@ -9,3 +9,5 @@ AttributeError: module 'jax.ops' has no attribute 'index_add'
 https://github.com/patrickbryant1/SpeedPPI
 conda create -n speedPPI python=3.9
 install using bash way 
+#################################################################### gpu request
+srun --pty --partition=scu-gpu --gres=gpu:4 --mem=200G bash -i
