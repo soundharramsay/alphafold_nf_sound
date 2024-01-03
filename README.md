@@ -16,6 +16,8 @@ srun --pty --partition=scu-gpu --gres=gpu:1 --mem=150G bash -i
 3# export CUDA path 
 export LD_LIBRARY_PATH=/home/software/spack/opt/spack/linux-centos7-x86_64/gcc-8.2.0/cuda-11.8.0-rqftjjg3pwtogsetgcrrytjcqutxgtaj/lib64:$LD_LIBRARY_PATH
 
+4#  python3 ./src/test_gpu_avail.py
+if above returns GPU --- then i loaded things efficiently 
 
 
 
