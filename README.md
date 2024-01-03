@@ -22,7 +22,7 @@ export LD_LIBRARY_PATH=/home/software/spack/opt/spack/linux-centos7-x86_64/gcc-8
 4#  python3 ./src/test_gpu_avail.py
 if above returns GPU --- then i loaded things efficiently 
 
-5### (speedPPI) [sor4003@scu-node053 SpeedPPI]$ bash predict_single.sh ./data/dev/zswim8_A7E2V4.fasta ./data/dev/zswim8_A7E2V4_copy.fasta hh-suite/build/bin/hhblits 0.5 ./zswim8_zswim8/
+5###  [sor4003@scu-node053 SpeedPPI]$ bash predict_single.sh ./data/dev/zswim8_A7E2V4.fasta ./data/dev/zswim8_A7E2V4_copy.fasta hh-suite/build/bin/hhblits 0.5 ./zswim8_zswim8/
 MSAs exists...
 Checking if all are present
 zswim8_A7E2V4
@@ -30,8 +30,16 @@ zswim8_A7E2V4
 zswim8_A7E2V4_copy
 ./zswim8_zswim8//msas//zswim8_A7E2V4_copy.a3m exists
 Predicting...
+^[[A^[[A^[[A^[[AEvaluating pair zswim8_A7E2V4-zswim8_A7E2V4_copy
+2024-01-03 15:52:46.853428: W external/org_tensorflow/tensorflow/compiler/xla/service/gpu/nvptx_compiler.cc:492] The NVIDIA driver's CUDA version is 11.5 which is older than the ptxas CUDA version (11.8.89). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
+/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/mapping.py:49: FutureWarning: jax.tree_flatten is deprecated, and will be removed in a future release. Use jax.tree_util.tree_flatten instead.
+  values_tree_def = jax.tree_flatten(values)[1]
+/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/mapping.py:53: FutureWarning: jax.tree_unflatten is deprecated, and will be removed in a future release. Use jax.tree_util.tree_unflatten instead.
+  return jax.tree_unflatten(values_tree_def, flat_axes)
+/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/mapping.py:124: FutureWarning: jax.tree_flatten is deprecated, and will be removed in a future release. Use jax.tree_util.tree_flatten instead.
+  flat_sizes = jax.tree_flatten(in_sizes)[0]
 
-
+  ####### working with elongin B and C prediction 
 
 
 
