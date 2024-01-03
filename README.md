@@ -40,6 +40,16 @@ Predicting...
   flat_sizes = jax.tree_flatten(in_sizes)[0]
 
   ####### working with elongin B and C prediction 
-
+Predicting...
+Evaluating pair elongC-elongB
+2024-01-03 17:01:27.844951: W external/org_tensorflow/tensorflow/compiler/xla/service/gpu/nvptx_compiler.cc:492] The NVIDIA driver's CUDA version is 11.5 which is older than the ptxas CUDA version (11.8.89). Because the driver is older than the ptxas version, XLA is disabling parallel compilation, which may slow down compilation. You should update your NVIDIA driver or use the NVIDIA-provided CUDA forward compatibility packages.
+/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/mapping.py:49: FutureWarning: jax.tree_flatten is deprecated, and will be removed in a future release. Use jax.tree_util.tree_flatten instead.
+  values_tree_def = jax.tree_flatten(values)[1]
+/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/mapping.py:53: FutureWarning: jax.tree_unflatten is deprecated, and will be removed in a future release. Use jax.tree_util.tree_unflatten instead.
+  return jax.tree_unflatten(values_tree_def, flat_axes)
+/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/mapping.py:124: FutureWarning: jax.tree_flatten is deprecated, and will be removed in a future release. Use jax.tree_util.tree_flatten instead.
+  flat_sizes = jax.tree_flatten(in_sizes)[0]
+It took 311.3439619541168 s to predict the interaction.
+elongC-elongB 0.6160406819875499
 
 
