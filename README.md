@@ -22,6 +22,15 @@ export LD_LIBRARY_PATH=/home/software/spack/opt/spack/linux-centos7-x86_64/gcc-8
 4#  python3 ./src/test_gpu_avail.py
 if above returns GPU --- then i loaded things efficiently 
 
+5### (speedPPI) [sor4003@scu-node053 SpeedPPI]$ bash predict_single.sh ./data/dev/zswim8_A7E2V4.fasta ./data/dev/zswim8_A7E2V4_copy.fasta hh-suite/build/bin/hhblits 0.5 ./zswim8_zswim8/
+MSAs exists...
+Checking if all are present
+zswim8_A7E2V4
+./zswim8_zswim8//msas//zswim8_A7E2V4.a3m exists
+zswim8_A7E2V4_copy
+./zswim8_zswim8//msas//zswim8_A7E2V4_copy.a3m exists
+Predicting...
+
 
 
 
