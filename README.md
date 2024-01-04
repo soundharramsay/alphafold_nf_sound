@@ -53,3 +53,150 @@ It took 311.3439619541168 s to predict the interaction.
 elongC-elongB 0.6160406819875499
 
 
+######### clullin3 and zswim8 OOM
+      Entry Parameter Subshape: f32[11,508,2605,49]
+                ==========================
+
+        Buffer 12:
+                Size: 1.62GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/alphafold_iteration/distogram_head/add" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/modules.py" source_line=1372
+                XLA Label: fusion
+                Shape: f32[2605,2605,64]
+                ==========================
+
+        Buffer 13:
+                Size: 559.67MiB
+                Entry Parameter Subshape: f32[11,5120,2605]
+                ==========================
+
+        Buffer 14:
+                Size: 559.67MiB
+                Entry Parameter Subshape: s32[11,5120,2605]
+                ==========================
+
+        Buffer 15:
+                Size: 559.67MiB
+                Entry Parameter Subshape: f32[11,5120,2605]
+                ==========================
+
+The stack trace below excludes JAX-internal frames.
+The preceding is the original exception that occurred, unmodified.
+
+--------------------
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/./src/run_alphafold_single.py", line 258, in <module>
+    main(num_ensemble=1,
+  File "/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/./src/run_alphafold_single.py", line 222, in main
+    prediction_result = model_runner.predict(processed_feature_dict)
+  File "/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/model.py", line 133, in predict
+    result = self.apply(self.params, jax.random.PRNGKey(0), feat)
+jaxlib.xla_extension.XlaRuntimeError: RESOURCE_EXHAUSTED: Out of memory while trying to allocate 34912723376 bytes.
+BufferAssignment OOM Debugging.
+BufferAssignment stats:
+             parameter allocation:    5.43GiB
+              constant allocation:    38.7KiB
+        maybe_live_out allocation:    1.73GiB
+     preallocated temp allocation:   32.51GiB
+  preallocated temp fragmentation:     2.0KiB (0.00%)
+                 total allocation:   39.68GiB
+              total fragmentation:    1.73GiB (4.37%)
+Peak buffers:
+        Buffer 1:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/mul" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/modules.py" source_line=1307
+                XLA Label: fusion
+                Shape: f32[128,2605,2605]
+                ==========================
+
+        Buffer 2:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/mul" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/modules.py" source_line=1307
+                XLA Label: fusion
+                Shape: f32[128,2605,2605]
+                ==========================
+
+        Buffer 3:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/left_projection/...cb,cd->...db/jit(_einsum)/dot_general[dimension_numbers=(((0,), (1,)), ((), ())) precision=None preferred_element_type=None]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/common_modules.py" source_line=76
+                XLA Label: custom-call
+                Shape: f32[128,6786025]
+                ==========================
+
+        Buffer 4:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/left_gate/...cb,cd->...db/jit(_einsum)/dot_general[dimension_numbers=(((0,), (1,)), ((), ())) precision=None preferred_element_type=None]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/common_modules.py" source_line=76
+                XLA Label: custom-call
+                Shape: f32[128,6786025]
+                ==========================
+
+        Buffer 5:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/right_projection/...cb,cd->...db/jit(_einsum)/dot_general[dimension_numbers=(((0,), (1,)), ((), ())) precision=None preferred_element_type=None]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/common_modules.py" source_line=76
+                XLA Label: custom-call
+                Shape: f32[128,6786025]
+                ==========================
+
+        Buffer 6:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/right_gate/...cb,cd->...db/jit(_einsum)/dot_general[dimension_numbers=(((0,), (1,)), ((), ())) precision=None preferred_element_type=None]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/common_modules.py" source_line=76
+                XLA Label: custom-call
+                Shape: f32[128,6786025]
+                ==========================
+
+        Buffer 7:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/triangle_multiplication_outgoing/gating_linear/...cb,cd->...db/jit(_einsum)/dot_general[dimension_numbers=(((0,), (1,)), ((), ())) precision=None preferred_element_type=None]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/common_modules.py" source_line=76
+                XLA Label: custom-call
+                Shape: f32[128,6786025]
+                ==========================
+
+        Buffer 8:
+                Size: 3.24GiB
+                XLA Label: fusion
+                Shape: f32[128,2605,2605]
+                ==========================
+
+        Buffer 9:
+                Size: 3.24GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/broadcast_in_dim[shape=(2605, 2605, 128) broadcast_dimensions=()]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/modules.py" source_line=352
+                XLA Label: broadcast
+                Shape: f32[2605,2605,128]
+                ==========================
+
+        Buffer 10:
+                Size: 3.18GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/while/body/alphafold_iteration/evoformer/__layer_stack_no_state/while/body/extra_msa_stack/outer_product_mean/layer_norm_input/jit(_var)/reduce_sum[axes=(2,)]" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/modules.py" source_line=1446
+                XLA Label: fusion
+                Shape: f32[5120,2605,64]
+                ==========================
+
+        Buffer 11:
+                Size: 2.66GiB
+                Entry Parameter Subshape: f32[11,508,2605,49]
+                ==========================
+
+        Buffer 12:
+                Size: 1.62GiB
+                Operator: op_name="jit(apply_fn)/jit(main)/alphafold/alphafold_iteration/distogram_head/add" source_file="/athena/kleavelandlab/store/sor4003/folddock/SpeedPPI/src/alphafold/model/modules.py" source_line=1372
+                XLA Label: fusion
+                Shape: f32[2605,2605,64]
+                ==========================
+
+        Buffer 13:
+                Size: 559.67MiB
+                Entry Parameter Subshape: f32[11,5120,2605]
+                ==========================
+
+        Buffer 14:
+                Size: 559.67MiB
+                Entry Parameter Subshape: s32[11,5120,2605]
+                ==========================
+
+        Buffer 15:
+                Size: 559.67MiB
+                Entry Parameter Subshape: f32[11,5120,2605]
+
+
