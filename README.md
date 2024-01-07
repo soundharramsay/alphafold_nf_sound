@@ -1,4 +1,4 @@
-# alphafold_nf_sound
+i# alphafold_nf_sound
 #/home/sor4003/store_sor4003/folddock/SpeedPPI
 
 https://gitlab.com/ElofssonLab/FoldDock
