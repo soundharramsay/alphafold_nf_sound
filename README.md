@@ -1,3 +1,15 @@
+
+## Attempting alphafold in WCM scu 
+ 
+
+
+
+
+
+
+
+
+
 i# alphafold_nf_sound
 #/home/sor4003/store_sor4003/folddock/SpeedPPI
 
