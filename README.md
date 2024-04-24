@@ -1,13 +1,6 @@
 
 ## Attempting alphafold in WCM scu 
- 
-
-
-
-
-
-
-
+ location ------ /software/apps/alphafold/singularity_script/slurm_script
 
 
 i# alphafold_nf_sound
