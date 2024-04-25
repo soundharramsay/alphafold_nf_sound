@@ -2,6 +2,8 @@
 ## Attempting alphafold in WCM scu 
  location ------ /software/apps/alphafold/singularity_script/slurm_script
 
+ module load alphafold/2.1.2
+
 
 i# alphafold_nf_sound
 #/home/sor4003/store_sor4003/folddock/SpeedPPI
