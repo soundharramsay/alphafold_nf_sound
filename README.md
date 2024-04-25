@@ -4,6 +4,20 @@
 
  module load alphafold/2.1.2
 
+ module load alphafold/2.1.2
+
+
+run_alphafold --fasta_paths=/athena/boudkerlab/scratch/vgg4001/alphafold2_scu/VGLUT2_GSlinker4_digest.fasta \
+    --output_dir=/athena/boudkerlab/scratch/vgg4001/alphafold2_scu \
+    --model_preset=monomer \
+    --db_preset=full_dbs \
+    --bfd_database_path=/data/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt \
+    --pdb70_database_path=/data/pdb70/pdb70 \
+    --uniclust30_database_path=/data/uniclust30/uniclust30_2018_08/uniclust30_2018_08 \
+    --max_template_date=2022-02-02 \
+    --use_gpu_relax=true \
+
+
 
 i# alphafold_nf_sound
 #/home/sor4003/store_sor4003/folddock/SpeedPPI
