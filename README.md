@@ -1,5 +1,48 @@
 
-## Attempting alphafold in WCM scu 
+## Attempting alpha fold in WCM scu 
+ > location in SCU /software/apps/alphafold
+> working directory /home/sor4003/store_sor4003/alphafold_sound
+
+run_alphafold --fasta_paths=/home/sor4003/2_z8_elob_eloc_cul3/Z8_elob_eloc_cul3.fasta --output_dir=/home/sor4003/ --model_preset=multimer --db_preset=full_dbs --max_template_date=2022-02-02 --use_gpu_relax=true --bfd_database_path=/data/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt --uniclust30_database_path=/data/uniclust30/uniclust30_2018_08/uniclust30_2018_08 --pdb_seqres_database_path /home/sor4003/pdb_seqres_database_by_RS/pdb_seqres/pdb_seqres.txt
+INFO:    /etc/singularity/ exists; cleanup by system administrator is not complete (see https://apptainer.org/docs/admin/latest/singularity_migration.html)
+Traceback (most recent call last):
+  File "/app/alphafold/run_alphafold.py", line 445, in <module>
+    app.run(main)
+  File "/opt/alphafoldenv/lib/python3.8/site-packages/absl/app.py", line 312, in run
+    _run_main(main, args)
+  File "/opt/alphafoldenv/lib/python3.8/site-packages/absl/app.py", line 258, in _run_main
+    sys.exit(main(argv))
+  File "/app/alphafold/run_alphafold.py", line 309, in main
+    _check_flag('uniprot_database_path', 'model_preset',
+  File "/app/alphafold/run_alphafold.py", line 148, in _check_flag
+    raise ValueError(f'{flag_name} must {verb} set when running with '
+ValueError: uniprot_database_path must be set when running with "--model_preset=multimer".
+
+
+
+ less alphafold_latest.sh 
+> #!/bin/bash -l
+#SBATCH --job-name alphafold-run
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
+#SBATCH --ntasks=8
+#SBATCH --partition=boudker-gpu
+#SBATCH --mem=100GB
+
+echo "Running on Node: " $HOSTNAME
+
+module load alphafold/2.1.2
+
+
+run_alphafold --fasta_paths=/athena/boudkerlab/scratch/vgg4001/alphafold2_scu/VGLUT2_GSlinker4_digest.fasta \
+    --output_dir=/athena/boudkerlab/scratch/vgg4001/alphafold2_scu \
+    --model_preset=monomer \
+    --db_preset=full_dbs \
+    --bfd_database_path=/data/bfd/bfd_metaclust_clu_complete_id30_c90_final_seq.sorted_opt \
+    --pdb70_database_path=/data/pdb70/pdb70 \
+    --uniclust30_database_path=/data/uniclust30/uniclust30_2018_08/uniclust30_2018_08 \
+    --max_template_date=2022-02-02 \
+    --use_gpu_relax=true \
  
 
 
